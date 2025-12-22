@@ -1,62 +1,75 @@
 <?php
 ob_start();
-$action = $_GET['action'];
 include 'admin_class.php';
+
 $crud = new Action();
+$action = isset($_GET['action']) ? $_GET['action'] : '';
 
+/* ================== AUTH ================== */
 if($action == 'login'){
-	$login = $crud->login();
-	if($login)
-		echo $login;
-}
-if($action == 'logout'){
-	$logout = $crud->logout();
-	if($logout)
-		echo $logout;
-}
-if($action == 'save_user'){
-	$save = $crud->save_user();
-	if($save)
-		echo $save;
-}
-if($action == "save_settings"){
-	$save = $crud->save_settings();
-	if($save)
-		echo $save;
-}
-if($action == "save_category"){
-	$save = $crud->save_category();
-	if($save)
-		echo $save;
-}
-if($action == "delete_category"){
-	$save = $crud->delete_category();
-	if($save)
-		echo $save;
-}
-if($action == "save_room"){
-	$save = $crud->save_room();
-	if($save)
-		echo $save;
-}
-if($action == "delete_room"){
-	$save = $crud->delete_room();
-	if($save)
-		echo $save;
-}
-if($action == "save_check-in"){
-	$save = $crud->save_check_in();
-	if($save)
-		echo $save;
-}
-if($action == "save_checkout"){
-	$save = $crud->save_checkout();
-	if($save)
-		echo $save;
-}
-if($action == "save_book"){
-	$save = $crud->save_book();
-	if($save)
-		echo $save;
+	echo $crud->login();
+	exit;
 }
 
+if($action == 'logout'){
+	echo $crud->logout();
+	exit;
+}
+
+/* ================== USER ================== */
+if($action == 'save_user'){
+	echo $crud->save_user();
+	exit;
+}
+
+/* ================== SETTINGS ================== */
+if($action == 'save_settings'){
+	echo $crud->save_settings();
+	exit;
+}
+
+/* ================== CATEGORY ================== */
+if($action == 'save_category'){
+	echo $crud->save_category();
+	exit;
+}
+
+if($action == 'delete_category'){
+	echo $crud->delete_category();
+	exit;
+}
+
+/* ================== ROOM ================== */
+if($action == 'save_room'){
+	echo $crud->save_room();
+	exit;
+}
+
+if($action == 'delete_room'){
+	echo $crud->delete_room();
+	exit;
+}
+
+/* ================== CHECK IN / OUT ================== */
+/* ❗ ĐỔI save_check-in → save_check_in (chuẩn PHP & JS) */
+if($action == 'save_check_in'){
+	echo $crud->save_check_in();
+	exit;
+}
+
+if($action == 'save_checkout'){
+	echo $crud->save_checkout();
+	exit;
+}
+
+/* ================== BOOKING ================== */
+if($action == 'save_book'){
+	echo $crud->save_book();
+	exit;
+}
+
+/* ================== DELETE BOOKING / CHECKED ================== */
+if($action == 'delete_check_out'){
+	echo $crud->delete_check_out();
+	exit;
+}
